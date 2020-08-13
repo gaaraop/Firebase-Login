@@ -1,3 +1,4 @@
+var auth2 = firebase.auth();
 // signup
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
@@ -8,7 +9,7 @@ signupForm.addEventListener('submit', (e) => {
   const password = signupForm['signup-password'].value;
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(cred => {
+  auth2.createUserWithEmailAndPassword(email, password).then(cred => {
     console.log(cred.user);
     // close the signup modal & reset form
     const modal = document.querySelector('#modal-signup');
@@ -20,7 +21,7 @@ signupForm.addEventListener('submit', (e) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
   e.preventDefault();
-  auth.signOut().then(() => {
+  auth2.signOut().then(() => {
     console.log('user signed out');
   })
 });
@@ -35,7 +36,7 @@ loginForm.addEventListener('submit', (e) => {
   const password = loginForm['login-password'].value;
 
   // log the user in
-  auth.signInWithEmailAndPassword(email, password).then((cred) => {
+  auth2.signInWithEmailAndPassword(email, password).then((cred) => {
     console.log(cred.user);
     // close the signup modal & reset form
     const modal = document.querySelector('#modal-login');
@@ -44,16 +45,17 @@ loginForm.addEventListener('submit', (e) => {
   });
 
 });
-  var auth = firebase.auth();
-  const forgotPw = document.querySelector('#forgot-form');
-  forgotPw.addEventListener('submit', (e) => {
+
+const forgotPw = document.querySelector('#forgot-form');
+forgotPw.addEventListener('submit', (e) => {
 
     const emailFp = forgotPw['forgot-email'].value;
    
-    auth.sendPasswordResetEmail(emailFxcfrt).then(function() {
+    auth2.sendPasswordResetEmail(emailFxcfrt).then(function() {
       // Email sent.
       }).catch(function(error) {
       // An error happened.
+        console.log(toString(error));
       });
 
   });
