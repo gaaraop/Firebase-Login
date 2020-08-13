@@ -50,9 +50,9 @@ const forgotPw = document.querySelector('#forgot-form');
 forgotPw.addEventListener('submit', (e) => {
 
     const emailFp = forgotPw['forgot-email'].value;
-    console.log(emailFp);
+    // console.log(emailFp);    Email is caught perfectly
 
-    auth2.sendPasswordResetEmail(emailFxcfrt).then(function() {
+    auth2.sendPasswordResetEmail(emailFp).then(function() {
       // Email sent.
         console.log("Email Sent");
       }).catch(function(error) {
